@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RGB Color Mixer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        #color-display {
+            width: 70%;
+            height: 100px;
+            margin: 20px auto;
+            background-color: rgb(255, 0, 0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5em;
+            color: #fff;
+            border-radius: 10px;
+            border: 2px solid #ccc;
+        }
+
+        .slider-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .slider {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 30%;
+        }
+
+        .slider input {
+            width: 100%;
+        }
+
+        .slider label {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .value-display {
+            margin-top: 5px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Experiment by mixing the RGB values below:</h1>
+    <div id="color-display">rgb(255, 0, 0)</div>
+    <div class="slider-container">
+        <div class="slider">
+            <label for="red-slider">RED</label>
+            <input type="range" id="red-slider" min="0" max="255" value="255" oninput="updateColor()">
+            <div class="value-display" id="red-value">255</div>
+        </div>
+        <div class="slider">
+            <label for="green-slider">GREEN</label>
+            <input type="range" id="green-slider" min="0" max="255" value="0" oninput="updateColor()">
+            <div class="value-display" id="green-value">0</div>
+        </div>
+        <div class="slider">
+            <label for="blue-slider">BLUE</label>
+            <input type="range" id="blue-slider" min="0" max="255" value="0" oninput="updateColor()">
+            <div class="value-display" id="blue-value">0</div>
+        </div>
+    </div>
+
+    <script>
+        function updateColor() {
+            const red = document.getElementById("red-slider").value;
+            const green = document.getElementById("green-slider").value;
+            const blue = document.getElementById("blue-slider").value;
+
+            const rgbValue = `rgb(${red}, ${green}, ${blue})`;
+            document.getElementById("color-display").style.backgroundColor = rgbValue;
+            document.getElementById("color-display").textContent = rgbValue;
+
+            document.getElementById("red-value").textContent = red;
+            document.getElementById("green-value").textContent = green;
+            document.getElementById("blue-value").textContent = blue;
+        }
+    </script>
+</body>
+</html>
